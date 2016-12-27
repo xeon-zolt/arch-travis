@@ -163,6 +163,9 @@ setup_chroot() {
 
   # setup pacaur for AUR packages
   setup_pacaur
+
+  # setup travis like env
+  setup_travis_env
 }
 
 # add custom repositories to pacman.conf
@@ -242,6 +245,12 @@ run_build_script() {
     takedown_chroot
     exit $ret
   fi
+}
+
+# setup travis env
+setup_travis_env() {
+  declare -f travis_jigger >> $ARCH_TRAVIS_CHROOT/$user_home/.bashrc
+  declare -f travis_wait >> $ARCH_TRAVIS_CHROOT/$user_home/.bashrc
 }
 
 # setup pacaur

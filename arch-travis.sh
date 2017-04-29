@@ -254,32 +254,6 @@ run_build_script() {
   fi
 }
 
-# setup pacaur
-setup_pacaur() {
-  # Check if pacaur is available in the added repos
-  if _chroot_as_normal "pacman -Si pacaur &> /dev/null"; then
-    chroot_as_root "pacman -S --noconfirm pacaur"
-  else
-    local cowerarchive="cower.tar.gz"
-    local aururl="https://aur.archlinux.org/cgit/aur.git/snapshot/"
-    # install cower
-    as_normal "curl -O $aururl/$cowerarchive"
-    as_normal "tar xf $cowerarchive"
-    chroot_as_normal "cd cower && makepkg -is --skippgpcheck --noconfirm"
-    as_root "rm -r cower"
-    as_normal "rm $cowerarchive"
-    # install pacaur
-    chroot_as_normal "cower -dd pacaur"
-    chroot_as_normal "cd pacaur && makepkg -is --noconfirm"
-    chroot_as_normal "rm -rf pacaur"
-  fi
-}
-
-# install package through pacaur
-_pacaur() {
-  local pacaur="pacaur -S $@ --noconfirm --noedit"
-  chroot_as_normal "$pacaur"
-}
 
 # takedown chroot
 # unmounts anything mounted in the chroot setup
@@ -326,18 +300,18 @@ build_scripts() {
 }
 
 # install packages defined in .travis.yml
-install_packages() {
-  for package in "${CONFIG_PACKAGES[@]}"; do
-    _pacaur $package
-  done
-}
+#install_packages() {
+  #for package in "${CONFIG_PACKAGES[@]}"; do
+    #_pacaur $package
+ # done
+#}
 
 # install custom compiler if CC != gcc
-install_c_compiler() {
-  if [ "$TRAVIS_CC" != "gcc" ]; then
-    _pacaur "$TRAVIS_CC"
-  fi
-}
+#install_c_compiler() {
+ # if [ "$TRAVIS_CC" != "gcc" ]; then
+  #  _pacaur "$TRAVIS_CC"
+  #fi
+#}
 
 arch_msg() {
   lightblue='\033[1;34m'

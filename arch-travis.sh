@@ -274,6 +274,7 @@ setup_pacaur() {
     chroot_as_normal "cd pacaur && makepkg -is --noconfirm"
     chroot_as_normal "rm -rf pacaur"
     chroot_as_root "pacman-key --populate"
+    chroot_as_root "pacman-key --init "
   fi
 }
 

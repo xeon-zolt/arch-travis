@@ -146,12 +146,8 @@ setup_chroot() {
   sudo mount --bind /run $ARCH_TRAVIS_CHROOT/run
 
   # update packages
-  chroot_as_root "pacman-key --init"
-  chroot_as_root "pacman-key --populate archlinux"
   chroot_as_root "pacman -Syy"
   chroot_as_root "pacman -Syu ${default_packages[*]} --noconfirm"
-
-
 
   # use LANG=en_US.UTF-8 as expected in travis environments
   as_root "sed -i 's|#en_US.UTF-8|en_US.UTF-8|' $ARCH_TRAVIS_CHROOT/etc/locale.gen"

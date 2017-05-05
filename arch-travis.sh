@@ -148,7 +148,6 @@ setup_chroot() {
   # update packages
   chroot_as_root "pacman -Syy"
   chroot_as_root "pacman -Syu ${default_packages[*]} --noconfirm"
-  chroot_as_root "pacman-key --init"
   #chroot_as_root "pacman -S archlinux-keyring && sudo pacman -Syu"
 
   # use LANG=en_US.UTF-8 as expected in travis environments

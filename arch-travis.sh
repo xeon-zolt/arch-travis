@@ -146,6 +146,7 @@ setup_chroot() {
   sudo mount --bind /run $ARCH_TRAVIS_CHROOT/run
 
   # update packages
+  
   chroot_as_root "pacman -Syy"
   chroot_as_root "pacman -Syu ${default_packages[*]} --noconfirm"
 
@@ -272,6 +273,7 @@ setup_pacaur() {
     chroot_as_normal "cower -dd pacaur"
     chroot_as_normal "cd pacaur && makepkg -is --noconfirm"
     chroot_as_normal "rm -rf pacaur"
+    chroot_as_root "pacman-key --populate"
   fi
 }
 

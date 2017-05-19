@@ -10,15 +10,15 @@ sudo: required
 
 arch:
   repos:
-    - papyros=http://dash.papyros.io/repos/$repo/$arch
+    - papyros=archlinuxfr=http://repo.archlinux.fr/$arch
   packages:
     # pacman packages
     - python
     - perl
     # aur packages
     - go-git
-    # packages from papyros repo
-    - papyros-shell
+    # packages from archlinuxfr 
+    - yaourt
   script:
     - "./build_script.sh"
 

@@ -23,7 +23,7 @@ arch:
     - "./build_script.sh"
 
 script:
-  - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
+  - "curl -s https://raw.githubusercontent.com/xeon-zolt/arch-travis/master/arch-travis.sh | bash"
 ```
 
 `arch.repos` defines a list of custom repositories.
@@ -123,25 +123,4 @@ compiler: clang
 
 ## Projects using arch-travis
 
-* [sway](https://github.com/SirCmpwn/sway)
-
-## LICENSE
-Copyright (C) 2016-2017  Mikkel Oscar Lyderik Larsen
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-[travis-ci]: https://travis-ci.org
-[travis-container]: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
-[arch-mirrors]: https://www.archlinux.org/mirrorlist/all/
-[travis-issue-4757]: https://github.com/travis-ci/travis-ci/issues/4757
+* [Event-Linux](https://github.com/xeon-zolt/Event-linux)
